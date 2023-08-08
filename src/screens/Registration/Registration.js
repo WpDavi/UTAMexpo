@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import {
   Button,
+  ButtonCadastro,
   Container,
   ContainerBackFront,
   ContainerButtons,
@@ -31,19 +32,40 @@ export default function Registration() {
   const [level, setLevel] = useState(1);
 
   const registration = async () => {
-    console.log("click");
-    const res = await Api.cadastro(name, email, password, fone, blood);
-    console.log(res);
-    alert(res.msg);
+    if (!fone) {
+      alert("Telefone é obrigatório");
+    } else {
+      const res = await Api.cadastro(name, email, password, fone, blood);
+      if (res.msg == "Cadastrado") {
+        alert("Usuario Cadastrado");
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "MainTab" }],
+        });
+      } else {
+        alert(res.msg);
+      }
+    }
   };
 
   const handleRight = () => {
-    if (level == 1) {
-      setLevel(2);
-    } else if (level == 2) {
-      setLevel(3);
+    if (!name || !email) {
+      alert("campos obrigatorios");
+    } else {
+      if (level == 1) {
+        setLevel(2);
+      } else if (level == 2) {
+        if (password !== confirmpassword) {
+          alert("As senhas não confere");
+        } else if (!password || !confirmpassword) {
+          alert("campos obrigatorios ");
+        } else {
+          setLevel(3);
+        }
+      }
     }
   };
+
   const handleLeft = () => {
     if (level == 2) {
       setLevel(1);
@@ -146,11 +168,10 @@ export default function Registration() {
               <TxtButton> CADASTRAR </TxtButton>
             </Button>
           )}
-
-          <Button onPress={() => navigation.navigate("Login")}>
-            <TxtCadastro>Já sou cadastrado!!!</TxtCadastro>
-          </Button>
         </ContainerButtons>
+        <ButtonCadastro onPress={() => navigation.navigate("Login")}>
+          <TxtCadastro>Já sou cadastrado!!!</TxtCadastro>
+        </ButtonCadastro>
       </ContainerInfos>
     </Container>
   );
