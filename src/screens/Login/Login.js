@@ -11,22 +11,26 @@ import {
 } from "react-native";
 import Api from "../../service/Api";
 import { styled } from "styled-components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState();
   const [senha, setSenha] = useState();
 
-  const login = async () => {
+  const loginn = async () => {
     const res = await Api.signIn(email, senha);
+    console.log('click')
 
     if (res.msg !== "Login") {
       alert(res.msg);
     } else {
+      
       navigation.reset({
         index: 0,
         routes: [{ name: "MainTab" }],
       });
+      await AsyncStorage.setItem('Login', 'feito')
     }
   };
 
@@ -55,7 +59,7 @@ export default function Login() {
           />
         </ContainerInput>
 
-        <ContaButton onPress={login}>
+        <ContaButton onPress={loginn}>
           <TxtButton> ENTRAR </TxtButton>
         </ContaButton>
 

@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function PreLogin() {
   const navigation = useNavigation();
+
+  useEffect(()=>{    
+    async function getItem(){
+      const res = await AsyncStorage.getItem('Login')
+      if(res == 'feito'){
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "MainTab" }],
+        });
+      }
+      console.log(res)
+    }
+    getItem()
+
+  },[])
 
   return (
     <Container source={require("../assets/fundo.png")}>

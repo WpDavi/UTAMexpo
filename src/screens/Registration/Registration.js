@@ -40,8 +40,9 @@ export default function Registration() {
         alert("Usuario Cadastrado");
         navigation.reset({
           index: 0,
-          routes: [{ name: "MainTab" }],
+          routes: [{ name: "MainTab" }],          
         });
+        await AsyncStorage.setItem('Login', 'feito')
       } else {
         alert(res.msg);
       }

@@ -1,6 +1,6 @@
 //const BASE_API = "http://66.94.120.192:5001";
-const BASE_API = "http://192.168.0.62:5000";
-//const BASE_API = 'http://192.168.1.8:5001';
+//const BASE_API = "http://192.168.0.62:5000";
+const BASE_API = 'http://192.168.1.8:5000';
 
 export default {
   signIn: async (email, senha) => {
