@@ -1,6 +1,7 @@
 //const BASE_API = "http://66.94.120.192:5001";
-//const BASE_API = "http://192.168.0.62:5000";
-const BASE_API = 'http://192.168.1.8:5000';
+export const BASE_API = "http://192.168.0.62:5000";
+//const BASE_API = 'http://192.168.1.8:5000';
+import * as FileSystem from "expo-file-system";
 
 export default {
   signIn: async (email, senha) => {
@@ -37,9 +38,33 @@ export default {
   },
   getPost: async () => {
     const req = await fetch(`${BASE_API}/posts`, {
-      method: "GET"
-    })
+      method: "GET",
+    });
     const json = await req.json();
     return json;
+  },
+
+  UplodPost: async (image) => {
+    console.log(image, "aaaaaaaaaaaaa");
+    try {
+      const response = await FileSystem.uploadAsync(
+        `${BASE_API}/uplouds`,
+        image,
+        {
+          fieldName: "post",
+          httpMethod: "POST",
+          uploadType: FileSystem.FileSystemUploadType.MULTIPART,
+          headers: {
+            Accept: "application/json",
+            email: "wpdavi@hotmail.com",
+            name: "davi",
+            status: "teste",
+          },
+        }
+      );
+      console.log(JSON.stringify(response, null, 4));
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
