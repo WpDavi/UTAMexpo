@@ -35,4 +35,11 @@ export default {
     const json = await req.json();
     return json;
   },
+  getPost: async () => {
+    const req = await fetch(`${BASE_API}/posts`, {
+      method: "GET"
+    })
+    const json = await req.json();
+    return json;
+  },
 };

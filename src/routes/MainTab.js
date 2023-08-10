@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import  CustomTabBar from '../Componentes/tabbar'
 
 
-import Feed from "../screens/TabScreens/Feed";
+import Feed from "../screens/TabScreens/Feed/Feed";
 import Bazar from "../screens/TabScreens/Bazar";
 import Reclamaçoes from "../screens/TabScreens/Reclamações";
 import Hanking from "../screens/TabScreens/Hanking";
