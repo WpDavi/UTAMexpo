@@ -3,10 +3,16 @@ import { Image } from "react-native";
 import styled from "styled-components";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
+import BASE_API from '../../../../service/Api'
 
 export const ListaOpe = ({ fun, id, setId }) => {
   const screenWidth = Dimensions.get("window").width;
   const imageAspectRatio = 16 / 9;
+
+ 
+//const BASE_API = "http://192.168.0.62:5000";
+const BASE_API = 'http://192.168.1.8:5000';
+
 
   const imageHeight = screenWidth / imageAspectRatio;
   return (
@@ -14,7 +20,7 @@ export const ListaOpe = ({ fun, id, setId }) => {
       <Header>
         <ConImgName>
           <ImgPerfil
-            source={{ uri: `http://192.168.0.62:5000/${fun.photoperfil}` }}
+            source={{ uri: `${BASE_API}/${fun.photoperfil}` }}
           />
           <Name>{fun.name}</Name>
         </ConImgName>
@@ -23,7 +29,7 @@ export const ListaOpe = ({ fun, id, setId }) => {
       <Body>
         <Image
           source={{
-            uri: `http://192.168.0.62:5000/${fun.photo}`,
+            uri: `${BASE_API}/${fun.photo}`,
           }}
           style={{ width: screenWidth, height: imageHeight }}
         />
