@@ -1,6 +1,7 @@
-//const BASE_API = "http://66.94.120.192:5001";
 //const BASE_API = "http://192.168.0.62:5000";
-const BASE_API = 'http://192.168.1.8:5000';
+//const BASE_API = 'http://192.168.1.8:5000';
+const BASE_API = "https://utamapi.onrender.com"
+
 import * as FileSystem from "expo-file-system";
 
 export default {
