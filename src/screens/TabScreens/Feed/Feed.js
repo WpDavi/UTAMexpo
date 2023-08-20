@@ -27,7 +27,7 @@ export default function Feed() {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [16, 9],
+      aspect: [16, 12],
       quality: 1,
     });
     console.log(result);

@@ -11,17 +11,29 @@ export const ListaOpe = ({ fun, id, setId }) => {
 
  
 //const BASE_API = "http://192.168.0.62:5000";
-const BASE_API = 'http://192.168.1.8:5000';
+//const BASE_API = 'http://192.168.1.8:5000';
+const BASE_API = "https://utamapi.onrender.com"
+
+//login: !login ? users.login : login,
+//<ImgPerfil
+//source={{ uri: `${BASE_API}/${fun.photoperfil }` }}
+///>
 
 
   const imageHeight = screenWidth / imageAspectRatio;
   return (
     <Container>
       <Header>
-        <ConImgName>
-          <ImgPerfil
-            source={{ uri: `${BASE_API}/${fun.photoperfil}` }}
-          />
+        <ConImgName>     
+          {!fun.photoperfil &&
+            <ImgPerfil
+              source={require('../../../../assets/perfil.png')}
+            /> } 
+          {fun.photoperfil &&
+            <ImgPerfil
+              source={{ uri: `${BASE_API}/${fun.photoperfil}` }}
+            /> }   
+                 
           <Name>{fun.name}</Name>
         </ConImgName>
         <TxtNum>Operador {fun.number}</TxtNum>

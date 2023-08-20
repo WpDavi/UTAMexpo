@@ -19,6 +19,7 @@ export default {
     const json = await req.json();
     return json;
   },
+
   cadastro: async (name, email, password, fone, blood) => {
     console.log(name, email, password, fone, blood);
     const req = await fetch(`${BASE_API}/user`, {
@@ -37,6 +38,7 @@ export default {
     const json = await req.json();
     return json;
   },
+
   getPost: async () => {
     const req = await fetch(`${BASE_API}/posts`, {
       method: "GET",
