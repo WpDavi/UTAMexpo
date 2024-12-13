@@ -1,4 +1,4 @@
-//const BASE_API = "http://192.168.0.62:5000";
+//const BASE_API = "http://192.168.0.64:5000";
 //const BASE_API = 'http://192.168.1.8:5000';
 const BASE_API = "https://utamapi.onrender.com"
 
@@ -21,7 +21,6 @@ export default {
   },
 
   cadastro: async (name, email, password, fone, blood) => {
-    console.log(name, email, password, fone, blood);
     const req = await fetch(`${BASE_API}/user`, {
       method: "POST",
       body: JSON.stringify({
@@ -36,6 +35,7 @@ export default {
       },
     });
     const json = await req.json();
+    console.log(req)
     return json;
   },
 

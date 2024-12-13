@@ -1,12 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  TextInput,
-  StyleSheet,
   TouchableOpacity,
 } from "react-native";
 import Api from "../../service/Api";

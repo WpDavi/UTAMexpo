@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Button } from "react-native";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, ListRenderItem } from "react-native";
+import { Tabs } from 'react-native-collapsible-tab-view'
 
 export default function Perfil() {
     const navigation = useNavigation()
